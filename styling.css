@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap');
+
+#section1 {
+    background-color: gray;
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    
+}
+
+#play {
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(to right, red, yellow, green);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-size: 3rem;
+    border-width: 0.25rem;
+}
+
+.bodyclass {
+    background-image: linear-gradient(to right, #363605, #4d4d04, #696911, #383802, #82821d, #9e9e0b);
+    width: 100vw;
+    height: 100vh;
+}
+
+.bg-Full {
+    background: rgb(39, 39, 39);
+    margin: 1%;
+    padding-top: 1%;
+    border-radius: 1%;
+}
+
+.r1c1 {
+    background-color: #e7e8d3;
+    margin: 2.5%;
+    padding: 1%;
+    padding-top: 0;
+    width: 7rem;
+    height: 7.5rem;
+}
+
+.whatever {
+    font-size: 100px;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(#34ebde, #053330, #2f4070);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-weight: bold;
+    text-align: center;
+}
+
+.reverseQuestion {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.r1c2 {
+    background-color: #e7e8d3;
+    margin: 2.5%;
+    padding: 1%;
+    padding-top: 0;
+    width: 46.5rem;
+    height: 7.5rem;
+}
+
+.titleStyling {
+    font-size: 3rem;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(to right, #f32170, #ff6b08, #cf23cf, #eedd44);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-weight: bold;
+    margin-top: 1%;
+    padding-left: 2rem;
+}
+
+h6 {
+    font-size: 1.5rem;
+    text-align: right;
+    padding-right: 3rem;
+}
+
+.r2c1 {
+    background-image: linear-gradient(#8dd986, #5fb09c);
+    margin: 3%;
+    margin-top: 2.5%;
+    padding: 1%;
+    padding-top: 3%;
+    padding-left: 2%;
+    height: 29rem;
+    width: 26.4rem;
+    font-size: 1.6rem;
+    border-radius: 1rem;
+}
+
+input {
+    border-radius: 1rem;
+    margin-bottom: 1rem !important;
+}
+
+#refresh {
+    width: 6rem;
+    font-size: 1.5rem !important;
+    background-color: #0a1412;
+    color: white;
+    border-radius: 1rem !important;
+    padding: 2%;
+    margin-top: 1%;
+}
+
+.r2c2 {
+    background-color: white;
+    margin: 3%;
+    padding: 1%;
+    padding-top: 2.3%;
+    padding-left: 2%;
+    height: 29rem;
+    width: 26.4rem;
+    font-size: 1.8rem;
+    border-radius: 1rem;
+    margin-top: 2.5%;
+}
+
+#resultEl {
+    font-weight: bold;
+    font-size: 2.5rem;
+}
+
+#expPara {
+    font-weight: bold;
+    font-size: 3.5rem;
+}
+
+#numberOfChances {
+    color: black;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+#chancesHint {
+    font-style: italic;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.cloud-image {
+    background-image: url("https://i.pinimg.com/600x315/50/2a/56/502a5675fdf54087a3c5644ed8f883bf.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 30rem;
+    width: 20rem;
+    margin-top: 0%;
+
+}
+
+.lightning-image {
+    background-image: url("https://pixy.org/src/419/thumbs350/4196789.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 4em;
+    width: 4em;
+    margin-top: 14%;
+}
+
+.rotate_image {
+    -webkit-transform: rotate(30deg);
+    -moz-transform: rotate(30deg);
+    -ms-transform: rotate(30deg);
+    -o-transform: rotate(30deg);
+    transform: rotate(30deg);
+}
