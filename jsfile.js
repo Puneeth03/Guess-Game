@@ -10,10 +10,19 @@ let lightningImage = document.getElementById("lightningImage");
 let textPara = document.getElementById("textPara");
 let expPara = document.getElementById("expPara");
 let chancesHint = document.getElementById("chancesHint");
+let highesteff = document.getElementById("highesteff");
+let presenteff = document.getElementById("presenteff");
 
 let section1 = document.getElementById("section1");
 let section2 = document.getElementById("section2");
 let play = document.getElementById("play");
+
+let efficiency = localStorage.getItem("efficiency");
+let calculated_efficiency = null;
+
+if(efficiency !== null){
+    highesteff.textContent = "Your best Score:" + efficiency;
+}
 
 let arr = [0,2,3,4];
 
@@ -37,7 +46,6 @@ function generateRandNum(event) {
     range = parseInt(range);
 
     if (event.key === "Enter") {
-        console.log(range);
         randomNumber = Math.ceil(Math.random() * range);
         console.log(randomNumber);
 
@@ -57,10 +65,6 @@ function setChances(event) {
 
         chances = chancesEl.value;
         chances = parseInt(chances);
-
-        console.log(chances);
-
-        console.log(parseInt(range / 4));
 
         if (chances > range / 4) {
             alert("Check Note!!!! Try to decrease the chances");
@@ -83,6 +87,33 @@ chancesEl.addEventListener("click", function(event) {
     }
 });
 
+
+function calc(left,max,taken) {
+
+    let chances_left = left+1;
+    let max_chances = parseInt(max/4);
+    let total_chances = taken;
+    let chances_taken = taken;
+
+    let x = ( chances_left * max_chances ) / ( (total_chances - left) * chances_taken );
+
+    console.log(x);
+
+    calculated_efficiency = Math.round(x  ,2);
+
+    if(calculated_efficiency > 0){
+        presenteff.classList.remove("d-none");
+        presenteff.textContent = "Score: " + calculated_efficiency;
+        console.log(calculated_efficiency);
+    }
+
+    if(calculated_efficiency > efficiency){
+        efficiency = calculated_efficiency;
+        localStorage.setItem("efficiency",efficiency);
+    }
+}
+
+
 function checkNumber(event) {
 
     let enteredNumber = parseInt(enteredEl.value);
@@ -102,7 +133,14 @@ function checkNumber(event) {
             resultEl.textContent = "Yes U guessed it RIGHT";
             pId.classList.remove("d-none");
             ans.textContent = "";
-
+            numberOfChances.classList.add("d-none");
+            resultEl.appendChild(document.createElement("br"));
+            let chancesRes = document.createElement("span");
+            chancesRes.textContent = counter + " chances left";
+            chancesRes.style.color="black";
+            chancesRes.style.fontSize = "1.8rem";
+            resultEl.appendChild(chancesRes);
+            calc(counter,range,chances);
 
         } else {
             enteredEl.value = "";
@@ -145,11 +183,13 @@ function letReset() {
     textPara.classList.remove("d-none");
     expPara.classList.add("d-none");
     chancesHint.classList.add("d-none");
+    presenteff.classList.add("d-none");
     range = null;
     counter = null;
     randomNumber = null;
     chances = null;
     by = null;
+    highesteff.textContent = "Your best Score:" + efficiency;
 }
 
 resetBtn.onclick = function() {
