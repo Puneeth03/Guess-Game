@@ -115,29 +115,28 @@ input {
     background-color: white;
     margin: 3%;
     padding: 1%;
-    padding-top: 2.3%;
+    padding-top: 1%;
     padding-left: 2%;
     height: 29rem;
     width: 26.4rem;
-    font-size: 1.8rem;
+    font-size: 1.7rem;
     border-radius: 1rem;
     margin-top: 2.5%;
 }
 
 #resultEl {
     font-weight: bold;
-    font-size: 2.5rem;
+    font-size: 2rem;
 }
 
 #expPara {
     font-weight: bold;
-    font-size: 3.5rem;
 }
 
 #numberOfChances {
     color: black;
     font-weight: bold;
-    font-size: 2rem;
+    font-size: 1.75rem;
 }
 
 #chancesHint {
@@ -172,3 +171,9 @@ input {
     -o-transform: rotate(30deg);
     transform: rotate(30deg);
 }
+
+#highesteff {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1.5rem;
+}
+
