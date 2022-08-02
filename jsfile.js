@@ -99,7 +99,7 @@ function calc(left,max,taken) {
 
     console.log(x);
 
-    calculated_efficiency = Math.round(x  ,2);
+    calculated_efficiency = Math.round(x * 10 ,2) ;
 
     if(calculated_efficiency > 0){
         presenteff.classList.remove("d-none");
