@@ -13,6 +13,8 @@ let chancesHint = document.getElementById("chancesHint");
 let highesteff = document.getElementById("highesteff");
 let presenteff = document.getElementById("presenteff");
 
+let score_reset = document.getElementById("score_reset");
+
 let section1 = document.getElementById("section1");
 let section2 = document.getElementById("section2");
 let play = document.getElementById("play");
@@ -22,6 +24,9 @@ let calculated_efficiency = null;
 
 if(efficiency !== null){
     highesteff.textContent = "Your best Score:" + efficiency;
+}
+else{
+    highesteff.textContent = "";
 }
 
 let arr = [0,2,3,4];
@@ -194,6 +199,12 @@ function letReset() {
     highesteff.textContent = "Your best Score:" + efficiency;
 }
 
+score_reset.onclick = function() {
+    localStorage.setItem("efficiency",0);
+    efficiency = 0;
+    highesteff.textContent = "";
+};
+
 resetBtn.onclick = function() {
     letReset();
 };
@@ -204,5 +215,3 @@ play.onclick = function(){
     section2.classList.remove("d-none");
     document.body.classList.add("bodyclass");
 };
-
-
