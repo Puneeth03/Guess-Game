@@ -65,6 +65,20 @@ rangeEl.addEventListener("keydown", function(event) {
     generateRandNum(event);
 });
 
+rangeEl.onblur = function(){
+
+    range = rangeEl.value;
+    range = parseInt(range);
+    
+    randomNumber = Math.ceil(Math.random() * range);
+    console.log(randomNumber);
+
+    chancesHint.textContent = "The maximum you can enter is " + parseInt(range / 4);
+    chancesHint.classList.remove("d-none");
+
+    generateBy();
+}
+
 function setChances(event) {
     if (event.key === "Enter") {
 
@@ -86,12 +100,24 @@ chancesEl.addEventListener("keydown", function(event) {
     setChances(event);
 });
 
+chancesEl.onblur = function(){
+    chances = chancesEl.value;
+    chances = parseInt(chances);
+
+    if (chances > range / 4) {
+        alert("Check Note!!!! Try to decrease the chances");
+    } else {
+        counter = chances;
+        numberOfChances.classList.remove("d-none");
+        numberOfChances.textContent = counter + " chances left";
+    }
+}
+
 chancesEl.addEventListener("click", function(event) {
     if (randomNumber === null) {
         alert("Enter RANGE");
     }
 });
-
 
 function calc(left,max,taken) {
 
@@ -119,7 +145,6 @@ function calc(left,max,taken) {
         localStorage.setItem("efficiency",efficiency);
     }
 }
-
 
 function checkNumber(event) {
 
@@ -203,12 +228,12 @@ score_reset.onclick = function() {
     localStorage.setItem("efficiency",0);
     efficiency = 0;
     highesteff.textContent = "";
+    letReset();
 };
 
 resetBtn.onclick = function() {
     letReset();
 };
-
 
 play.onclick = function(){
     section1.classList.add("d-none");
