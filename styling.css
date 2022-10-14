@@ -1,189 +1,242 @@
-@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap');
+let rangeEl = document.getElementById("rangeEl");
+let chancesEl = document.getElementById("chancesEl");
+let enteredEl = document.getElementById("enteredEl");
+let resultEl = document.getElementById("resultEl");
+let resetBtn = document.getElementById("refresh");
+let numberOfChances = document.getElementById("numberOfChances");
+let ans = document.getElementById("ans");
+let pId = document.getElementById("pId");
+let lightningImage = document.getElementById("lightningImage");
+let textPara = document.getElementById("textPara");
+let expPara = document.getElementById("expPara");
+let chancesHint = document.getElementById("chancesHint");
+let highesteff = document.getElementById("highesteff");
+let presenteff = document.getElementById("presenteff");
 
-#section1 {
-    background-color: gray;
-    width: 100vw;
-    height: 100vh;
-    text-align: center;
+let score_reset = document.getElementById("score_reset");
+
+let section1 = document.getElementById("section1");
+let section2 = document.getElementById("section2");
+let play = document.getElementById("play");
+
+let efficiency = localStorage.getItem("efficiency");
+let calculated_efficiency = null;
+
+if(efficiency !== null){
+    highesteff.textContent = "Your best Score:" + efficiency;
+}
+else{
+    highesteff.textContent = "";
+}
+
+let arr = [0,2,3,4];
+
+let by = null;
+
+let range = null;
+
+let counter = null;
+
+let randomNumber = null;
+
+let chances = null;
+
+function generateBy(){
+    by = arr[Math.ceil(Math.random()*3)];
+}
+
+function generateRandNum(event) {
+
+    range = rangeEl.value;
+    range = parseInt(range);
+
+    if (event.key === "Enter") {
+        randomNumber = Math.ceil(Math.random() * range);
+        console.log(randomNumber);
+
+        chancesHint.textContent = "The maximum you can enter is " + parseInt(range / 4);
+        chancesHint.classList.remove("d-none");
+
+        generateBy();
+    }
+}
+
+rangeEl.addEventListener("keydown", function(event) {
+    generateRandNum(event);
+});
+
+rangeEl.onblur = function(){
+
+    range = rangeEl.value;
+    range = parseInt(range);
     
+    randomNumber = Math.ceil(Math.random() * range);
+    console.log(randomNumber);
+
+    chancesHint.textContent = "The maximum you can enter is " + parseInt(range / 4);
+    chancesHint.classList.remove("d-none");
+
+    generateBy();
 }
 
-#play {
-    font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(to right, red, yellow, green);
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-    font-size: 3rem;
-    border-width: 0.25rem;
-}
+function setChances(event) {
+    if (event.key === "Enter") {
 
-.bodyclass {
-    background-image: linear-gradient(to right, #363605, #4d4d04, #696911, #383802, #82821d, #9e9e0b);
-    width: 100vw;
-    height: 100vh;
-}
+        chances = chancesEl.value;
+        chances = parseInt(chances);
 
-.bg-Full {
-    background: rgb(39, 39, 39);
-    margin: 1%;
-    padding-top: 1%;
-    border-radius: 1%;
-}
-
-.r1c1 {
-    background-color: #e7e8d3;
-    margin: 2.5%;
-    padding: 1%;
-    padding-top: 0;
-    width: 7rem;
-    height: 7.5rem;
-}
-
-.whatever {
-    font-size: 100px;
-    font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(#34ebde, #053330, #2f4070);
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-    font-weight: bold;
-    text-align: center;
-}
-
-.reverseQuestion {
-    -webkit-transform: rotate(180deg);
-    -moz-transform: rotate(180deg);
-    -ms-transform: rotate(180deg);
-    -o-transform: rotate(180deg);
-    transform: rotate(180deg);
-}
-
-.r1c2 {
-    background-color: #e7e8d3;
-    margin: 2.5%;
-    padding: 1%;
-    padding-top: 0;
-    width: 46.5rem;
-    height: 7.5rem;
-}
-
-.titleStyling {
-    font-size: 3rem;
-    font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(to right, #f32170, #ff6b08, #cf23cf, #eedd44);
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-    font-weight: bold;
-    margin-top: 1%;
-    padding-left: 2rem;
-}
-
-h6 {
-    font-size: 1.5rem;
-    text-align: right;
-    padding-right: 3rem;
-}
-
-.r2c1 {
-    background-image: linear-gradient(#8dd986, #5fb09c);
-    margin: 3%;
-    margin-top: 2.5%;
-    padding: 1%;
-    padding-top: 3%;
-    padding-left: 2%;
-    height: 29rem;
-    width: 26.4rem;
-    font-size: 1.6rem;
-    border-radius: 1rem;
-}
-
-input {
-    border-radius: 1rem;
-    margin-bottom: 1rem !important;
-}
-
-#refresh {
-    width: 9rem;
-    font-size: 1.2rem !important;
-    background-color: #0a1412;
-    color: white;
-    border-radius: 1rem !important;
-    padding: 1.5%;
-    margin-top: 1%;
-}
-
-#score_reset {
-    width: 8.5rem;
-    font-size: 1.2rem !important;
-    background-color: #0a1412;
-    color: white;
-    border-radius: 1rem !important;
-    padding: 1.5%;
-    margin-top: 1%;
-    margin-right: 1.5rem;
-}
-
-.r2c2 {
-    background-color: white;
-    margin: 3%;
-    padding: 1%;
-    padding-top: 1%;
-    padding-left: 2%;
-    height: 29rem;
-    width: 26.4rem;
-    font-size: 1.7rem;
-    border-radius: 1rem;
-    margin-top: 2.5%;
-}
-
-#resultEl {
-    font-weight: bold;
-    font-size: 2rem;
-}
-
-#expPara {
-    font-weight: bold;
-}
-
-#numberOfChances {
-    color: black;
-    font-weight: bold;
-    font-size: 1.75rem;
-}
-
-#chancesHint {
-    font-style: italic;
-    font-size: 1.2rem;
-    font-weight: 700;
-}
-
-.cloud-image {
-    background-image: url("https://i.pinimg.com/600x315/50/2a/56/502a5675fdf54087a3c5644ed8f883bf.jpg");
-    background-size: contain;
-    background-repeat: no-repeat;
-    height: 30rem;
-    width: 20rem;
-    margin-top: 0%;
+        if (chances > range / 4) {
+            alert("Check Note!!!! Try to decrease the chances");
+        } else {
+            counter = chances;
+            numberOfChances.classList.remove("d-none");
+            numberOfChances.textContent = counter + " chances left";
+        }
+    }
 
 }
 
-.lightning-image {
-    background-image: url("https://pixy.org/src/419/thumbs350/4196789.jpg");
-    background-size: contain;
-    background-repeat: no-repeat;
-    height: 4em;
-    width: 4em;
-    margin-top: 14%;
+chancesEl.addEventListener("keydown", function(event) {
+    setChances(event);
+});
+
+chancesEl.onblur = function(){
+    chances = chancesEl.value;
+    chances = parseInt(chances);
+
+    if (chances > range / 4) {
+        alert("Check Note!!!! Try to decrease the chances");
+    } else {
+        counter = chances;
+        numberOfChances.classList.remove("d-none");
+        numberOfChances.textContent = counter + " chances left";
+    }
 }
 
-.rotate_image {
-    -webkit-transform: rotate(30deg);
-    -moz-transform: rotate(30deg);
-    -ms-transform: rotate(30deg);
-    -o-transform: rotate(30deg);
-    transform: rotate(30deg);
+chancesEl.addEventListener("click", function(event) {
+    if (randomNumber === null) {
+        alert("Enter RANGE");
+    }
+});
+
+function calc(left,max,taken) {
+
+    let chances_left = left+1;
+    let max_chances = parseInt(max/4);
+    let total_chances = taken;
+    let chances_taken = taken;
+
+    let x = ( chances_left * max_chances ) / ( (total_chances - left) * chances_taken );
+
+    console.log(x);
+
+    calculated_efficiency = (x * 10 );
+
+    calculated_efficiency = Math.round(calculated_efficiency * 1000 / range, 2);
+
+    if(calculated_efficiency > 0){
+        presenteff.classList.remove("d-none");
+        presenteff.textContent = "Score: " + calculated_efficiency;
+        console.log(calculated_efficiency);
+    }
+
+    if(calculated_efficiency > efficiency){
+        efficiency = calculated_efficiency;
+        localStorage.setItem("efficiency",efficiency);
+    }
 }
 
-#highesteff {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 1.5rem;
+function checkNumber(event) {
+
+    let enteredNumber = parseInt(enteredEl.value);
+
+    if (event.key === "Enter") {
+
+        counter = counter - 1;
+        numberOfChances.textContent = counter + " chances left";
+        if (counter === 0 && enteredNumber !== randomNumber) {
+            numberOfChances.textContent = "";
+            resultEl.textContent = "";
+            numberOfChances.textContent = "You are out of chances";
+            numberOfChances.style.fontSize = "25px";
+            expPara.classList.remove("d-none");
+            ans.textContent = "The number to be guessed is " + randomNumber;
+        } else if (enteredNumber === randomNumber) {
+            resultEl.textContent = "Yes U guessed it RIGHT";
+            pId.classList.remove("d-none");
+            ans.textContent = "";
+            numberOfChances.classList.add("d-none");
+            resultEl.appendChild(document.createElement("br"));
+            let chancesRes = document.createElement("span");
+            chancesRes.textContent = counter + " chances left";
+            chancesRes.style.color="black";
+            chancesRes.style.fontSize = "1.8rem";
+            resultEl.appendChild(chancesRes);
+            calc(counter,range,chances);
+
+        } else {
+            enteredEl.value = "";
+            if (enteredNumber <= randomNumber / by) {
+                ans.textContent = "The number you entered is SMALLER than the original number to be guessed";
+            } else if (enteredNumber <= (randomNumber)) {
+                ans.textContent = "The number you entered is ALMOST NEAR to the original number to be guessed";
+            } else if (enteredNumber >= randomNumber) {
+                ans.textContent = "The number you entered is BIGGER than the original number to be guessed";
+            }
+        }
+    }
 }
+
+enteredEl.addEventListener("keydown", function(event) {
+    textPara.classList.add("d-none");
+
+    if (counter > 0) {
+        checkNumber(event);
+    }
+});
+
+enteredEl.addEventListener("click",function(){
+    if (range === null){
+        alert("Enter RANGE");
+    }
+    else if (chances === null){
+        alert("Enter CHANCES");
+    }
+});
+
+function letReset() {
+    resultEl.textContent = "";
+    rangeEl.value = "";
+    chancesEl.value = "";
+    enteredEl.value = "";
+    numberOfChances.textContent = "";
+    pId.classList.add("d-none");
+    ans.textContent = "";
+    textPara.classList.remove("d-none");
+    expPara.classList.add("d-none");
+    chancesHint.classList.add("d-none");
+    presenteff.classList.add("d-none");
+    range = null;
+    counter = null;
+    randomNumber = null;
+    chances = null;
+    by = null;
+    highesteff.textContent = "Your best Score:" + efficiency;
+}
+
+score_reset.onclick = function() {
+    localStorage.setItem("efficiency",0);
+    efficiency = 0;
+    highesteff.textContent = "";
+    letReset();
+};
+
+resetBtn.onclick = function() {
+    letReset();
+};
+
+play.onclick = function(){
+    section1.classList.add("d-none");
+    section2.classList.remove("d-none");
+    document.body.classList.add("bodyclass");
+};
